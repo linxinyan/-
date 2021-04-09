@@ -68,12 +68,34 @@ padding: 上 右 下 左
     2、父子元素：当一个元素包含在另一个元素中，父元素没有padding或border把子元素的外边距隔开，父子元素的相邻上下外边距发生合并
 注：外边距叠加针对的是block和inline-block元素    
 #### （2）负margin技术 
+当元素的margin-top或者margin-left为负数时，“当前元素”会被拉出去，然后覆盖“其他元素”
+当元素的margin-bottom或者margin-right为负数时，“后续元素”会被拉进，然后覆盖“当前元素”<br>
 
+    使用技巧：
+    1、图片与文本对齐
+       vertical-align: text-bottom
+       设置图片 margin: 0 3px -3px 0
+    2、自适应两列布局
+       假设左边列的宽度固定，右边列的宽度自适应
+       固定的那一列：width: 100%; margin-right: -200px
+       自适应的那一列：width:200px
+    3、元素水平垂直居中（block、inline、inline-block都能用此方法）
+       父元素{
+          position: relative
+       }
+       子元素{
+          position: absolute
+          top: 50%
+          left: 50%   //先把子元素的左上角定位到父元素的中心
+          margin-top: height值一半的负值
+          margin-left: width值一半的负值
+       }       
 ### 4、边框
-
-
-
-
-
+border: 1px solid red
+### 5、overflow：定义`内容区`中内容溢出元素边框时发生的事情
+visible、hidden、scroll、auto <br>
+overflow: hidden 隐藏内容，以免影响布局；清除浮动
+## 四、display属性
+ 
 
     
