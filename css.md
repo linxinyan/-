@@ -96,6 +96,22 @@ border: 1px solid red
 visible、hidden、scroll、auto <br>
 overflow: hidden 隐藏内容，以免影响布局；清除浮动
 ## 四、display属性
- 
+### 1、 block 块元素
+eg: h1~h6,p,div,hr,ul<br>
+块元素独占一行，排斥其他元素（block、inline等）与其位于同一行<br>
+块元素内部可以容纳其他块元素和行内元素
+### 2、inline 行内元素
+eg: a,span <br>
+行内元素可以与其他行内元素位于同一行 <br>
+行内元素内部可以容纳其他`行内元素`，但不能容纳块元素 <br>
+无法定义height和width <br>
+可以定义margin-left和margin-right，无法定义margin-top和margin-bottom
+### 3、inline-block 行内块元素
+eg: img,input <br>
+可以定义height和width <br>
+可以与其他`行内元素`位于同一行<br>
+要为span、a等行内元素定义一定的width和height时，就可通过display: inline-block实现
+
+
 
     
