@@ -109,9 +109,44 @@ eg: a,span <br>
 ### 3、inline-block 行内块元素
 eg: img,input <br>
 可以定义height和width <br>
-可以与其他`行内元素`位于同一行<br>
+可以与其他`行内元素`位于同一行（这时行内元素之间有间距）<br>
 要为span、a等行内元素定义一定的width和height时，就可通过display: inline-block实现
+### 4、table-cell：让元素以表格单元格的形式呈现
+### 5、去除inline-block元素间距
+为父元素定义 font-size:0
+## 五、文本效果
+### 1、text-align: center 水平居中
+    text-align元素对inline元素、inline-block元素有效，对block元素无效
+    text-align: center 与margin: 0 auto ：
+    text-align:center 实现的是文字、inline元素和inline-block元素的水平居中；在父元素中定义（这样其除block外的子元素都水平居中了）
+    margin: 0 auto 实现的是block元素的水平居中；在当前元素中定义    
+### 2、line-height
+当line-height与height值相同时，实现单行文字的垂直居中<br>
+当line-height取值为百分比或em值时，元素的行高是相对于`当前元素`的font-size值<br>
+line-height值的继承：子元素会继承父元素line-height属性的像素(px)值，而非百分比
+### 3、vertical-align
+用于定义`周围的`文字、inline元素、inline-block元素相对于该元素基线的垂直对齐方式（“该元素”指被定义了vertical-align属性的元素） <br>
+vertical-align元素对inline元素、inline-block元素有效，对block元素无效 <br>
+vertical-align属性取值：负值、百分比和关键字<br>
+#### （1）负值
+如：vertical-align: -2px表示元素相对于基线`向上`偏移2px
+#### （2）百分比：相对于`当前元素`所继承的line-height属性值
+如：vertical-align: 50%; line-height: 20px; 则相当于vertical-align:10px，表示元素相对于基线向下偏移10px
+#### （3）关键词：top、middle、baseline、bottom
+应用：如单选框或复选框与文字垂直居中对齐
+## 六、表单效果
+### 1、textarea
+    1、固定大小：min-width、max-width
+    2、禁止拖动：resize: none
+## 七、浮动布局
+脱离文档流的方法：浮动、定位
+### 1、浮动的特点
+（1）浮动元素变成block类型，故可以定义width、height、padding、margin <br>
+（2）该元素脱离文档流后，后面的元素会紧跟着填上空缺的位置
+### 2、浮动的影响
+（1）对自身：变成block元素 <br>
+（2）对父元素：若浮动元素的height大于父元素的height，或者父元素没有定义高度height，此时浮动元素会脱离父元素，即“父元素高度塌陷” <br>
+（若父元素没设置高度但设置了宽度，塌陷后的父元素将变成一条线）<br>
 
 
 
-    
