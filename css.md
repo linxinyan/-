@@ -199,4 +199,41 @@ background: url(...) no-repeat 80px 40px （后两个为背景的位置）
     （2）在css中使用@font-face自定义字体
     （3）在HTML中，元素添加class="iconfont"
     （4）在元素中添加图标对应的字符串
+## 十二、css重要概念
+### 1、包含块（containing block）
+一个元素的大小和定位往往由该元素的包含块决定<br>
+一个元素的包含块由离它最近的“块级祖先元素”的“内容边界”（content区域的边界）决定。<br>
+注：当元素被设置为绝对定位时，该元素的包含块由离它最近的position: relative或position: absolute的祖先元素（block、inline等都可以）决定的
+### 2、层叠上下文（stacking context）
+网页实际上是三维结构的，除了x轴、y轴（平面），还有z轴，用来设定层的先后顺序
+### 3、格式上下文（formatting context）
+格式上下文指的是页面中的一块渲染区域，这个区域有一套自己的渲染规则。格式上下文决定了其内部元素将如何布局<br>
+不同类型的盒子会参加不同的格式上下文，块盒子（元素类型为block、table、list-item）参与BFC，行内盒子（元素类型为inline、inline-block、inline-table）参与IFC
+### （1）BFC（块级格式上下文）
+BFC是一个独立的渲染区域，只有块盒子`参与`。规定了内部块盒子是如何布局的
+    
+    1、创建BFC
+    如果一个元素具备了以下任何一个条件，该元素都会创建一个新的BFC：
+    根元素（根元素本身就是一个BFC）
+    float: left, right 
+    position: absolute, fixed
+    overflow: hidden, scroll, auto
+    display: inline-block, table-cell, flex, inline-flex
+    （注意：block类型的元素不会创建BFC，它是参与BFC）
+    2、BFC的特点
+    （1）在一个BFC内部，盒子会在垂直方向上一个接一个的排列；
+    （2）相邻的margin-top和margin-bottom会叠加；
+    （3）每一元素的左外边界会紧贴着包含盒子的容器的左边，即使存在浮动也是如此；
+    （4）如果存在内部元素是一个新的BFC，存在内部元素是浮动元素（它也是BFC），则这两个元素的区域不会发生重叠；
+    （5）BFC就是页面上的一个隔离的盒子，该盒子内部的元素不会影响外部的元素
+    （6）计算一个BFC的高度时，其内部浮动元素的高度也会参与计算
+    3、BFC的用途
+    （1）避免垂直外边距叠加：只要两个元素处于不同的BFC，就不会发生外边距叠加（如为其中一个元素设定父元素overflow: hidden）
+    （2）清除浮动
+    由第六条：计算一个BFC的高度时，其内部浮动元素的高度也会参与计算
+    可为没有定义height的父元素添加overflow: hidden，使得父元素变成BFC，BFC在计算自身高度时会把浮动子元素的高度算进去，最终父元素高度=浮动子元素的高度
+    （3）创建自适应两列布局
+    左边列：float: left 
+    右边列：overflow: hidden（变成BFC，就不会环绕浮动元素了）
+
 
