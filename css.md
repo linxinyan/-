@@ -119,7 +119,7 @@ eg: img,input <br>
     text-align元素对inline元素、inline-block元素有效，对block元素无效
     text-align: center 与margin: 0 auto ：
     text-align:center 实现的是文字、inline元素和inline-block元素的水平居中；在父元素中定义（这样其除block外的子元素都水平居中了）
-    margin: 0 auto 实现的是block元素的水平居中；在当前元素中定义    
+    margin: 0 auto 实现的是block元素的水平居中；在当前元素中定义（当前元素一定要定义width值）    
 ### 2、line-height
 当line-height与height值相同时，实现单行文字的垂直居中<br>
 当line-height取值为百分比或em值时，元素的行高是相对于`当前元素`的font-size值<br>
@@ -151,5 +151,52 @@ vertical-align属性取值：负值、百分比和关键字<br>
 ### 3、浮动的副作用
 （1）父元素高度塌陷，边框不能撑开 <br>
 （2）页面布局错乱
-### 4、
+### 4、清除浮动：不想浮动元素后面的元素环绕着它，希望后面的元素回归到正常的文档流
+    三种方法：
+    clear:both 
+    overflow:hidden（应用于浮动元素的父元素）
+    ::after伪元素
+## 八、定位布局
+1、元素只有在定义了position属性（除static）之后，top、left、bottom、right才生效。（通常使用两个就够了）<br>
+2、position: absolute 会将元素转换为block元素 <br>
+3、子元素相对父元素定位 <br>
+父元素定义position: relative，子元素定义position: absolute，再配合top、left等实现定位 <br>
+4、z-index属性：设置元素的堆叠顺序 <br>
+数值越大，越外层；若z-index值相同，遵循“后来者居上”原则来叠加
+## 九、css图形
+### 1、圆角半径 border-radius
+    一个值：四个角都一样
+    两个值：左上、右下
+    三个值：左上、右上左下、右下 
+    四个值：左上、右上、右下、左下 （顺时针）
+半圆：height=width的一半，右下角和左下角的圆角半径为0 <br>
+圆：4个角的圆角半径为宽度（或高度）的一半
+## 十、css性能优化
+### 1、属性简写
+border: 1px solid red <br>
+background: url(...) no-repeat 80px 40px （后两个为背景的位置）
+## 十一、css技巧
+### 1、水平居中
+    text-align: center 与margin: 0 auto ：
+    text-align:center 实现的是文字、inline元素和inline-block元素的水平居中；在父元素中定义（这样其除block外的子元素都水平居中了）
+    margin: 0 auto 实现的是block元素的水平居中；在当前元素中定义（当前元素一定要定义width值）  
+### 2、垂直居中
+    inline-height与height值相同：单行文本
+    
+    万能方法：
+    父元素{
+       position: relative
+    }
+    子元素{
+       position: absolute
+       top: 50%
+       left: 50%   //先把子元素的左上角定位到父元素的中心
+       margin-top: height值一半的负值
+       margin-left: width值一半的负值
+    }          
+### 3、iconfont技术
+    （1）下载好图标字体文件（.eto .woff .ttf .svg）并放入网站目录中
+    （2）在css中使用@font-face自定义字体
+    （3）在HTML中，元素添加class="iconfont"
+    （4）在元素中添加图标对应的字符串
 
